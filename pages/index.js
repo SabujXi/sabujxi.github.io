@@ -16,11 +16,17 @@ export default function Home() {
 
       <main className="m-4">
         <Header />
-        <div className='flex pt-4 justify-between xs:flex-col'>
+        <div className='
+        pt-4
+        flex
+        flex-col
+        md:flex-row
+        justify-between
+        '>
           <div className='flex-1'>
               <SkillCard />
           </div>
-          <div className='w-6 xs:hidden'>
+          <div className='h-6 md:w-6'>
 
           </div>
           <div className='flex-1'>
