@@ -14,6 +14,7 @@ import matter from "gray-matter";
 import Link from 'next/link'
 
 export default function Services({ postMetas }) {
+    console.log("\nPost metas: ", postMetas)
     return (
         <div className="bg-white">
             <Head>

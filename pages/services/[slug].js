@@ -24,17 +24,17 @@ export default function Services({ mdxSource }) {
                 <Header />
                 <div className='
                     pt-4
-                    flex
-                    flex-col
-                    md:flex-row
-                    justify-between
                 '>
-                    <MDXRemote {...mdxSource} />
+                    <h1>Title: {mdxSource.frontmatter.title}</h1>
+                    <div className='bg-gray-500'>
+                        <MDXRemote {...mdxSource} />
+
+                    </div>
                 </div>
 
                 <div className='
-          mt-4
-        '>
+                mt-4
+                '>
                     <Footer />
                 </div>
             </main>
@@ -42,13 +42,14 @@ export default function Services({ mdxSource }) {
     )
 }
 
-export async function getStaticProps(props) {
-    const slug = props.params.slug;
+export async function getStaticProps({ params }) {
+    const slug = params.slug;
     const fileContent = fs.readFileSync(path.join(process.cwd(), "pages/services/" + slug + ".mdx"), { encoding: "utf-8" });
     const mdxSource = await serialize(fileContent, { parseFrontmatter: true })
     return {
         props: {
-            mdxSource
+            mdxSource,
+            frontmatter: mdxSource.frontmatter
         }
     }
 }
@@ -61,6 +62,6 @@ export async function getStaticPaths() {
 
     return {
         paths,
-        fallback: true
+        fallback: false
     }
 }
