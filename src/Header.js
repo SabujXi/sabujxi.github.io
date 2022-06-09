@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 export default function Header(props) {
     return <>
         <div className="h-full
@@ -13,8 +15,8 @@ export default function Header(props) {
         flex-col
         md:flex-row
         ">
-            <Menu title="Home" />
-            <Menu title="Services" />
+            <Menu title="Home" link="/" />
+            <Menu title="Services" link="/services" />
             <Menu title="Projects" />
             <Menu title="Articles" />
             <Menu title="About" classNamez="md:ml-auto" />
@@ -22,8 +24,13 @@ export default function Header(props) {
     </>
 }
 
-function Menu({ title, classNamez }) {
+function Menu({ title, link, classNamez }) {
     return <span className={"text-white text-3xl px-3 py-2 md:py-0 border-b-2 inline-block md:border-b-0 border-white w-full md:w-fit hover:scale-105 " + (classNamez ? classNamez : "")}>
-        {title}
+        { link &&
+            <Link href={link}>
+                <a className="no-underline">{title}</a>
+            </Link> 
+        }
+        {!link && <>{title}</>}
     </span>
 }
