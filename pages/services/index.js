@@ -32,7 +32,7 @@ export default function Services({ postMetas }) {
                     justify-between
                 '>
                     {postMetas.map((postMeta) => {
-                        return <div>
+                        return <div key={postMeta.slug}>
                             <Link href={postMeta.slug}>
                                 <a>{postMeta.frontmatter.title}</a>
                             </Link> 
