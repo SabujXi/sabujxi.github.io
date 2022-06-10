@@ -3,7 +3,7 @@ export function P (props) {
 }
 
 export function H1 (props) {
-    const { className, children, otherProps } = props;
+    const { className, children, ...otherProps } = props;
     let _className = "";
     if (className) {
         _className = " " + className;
@@ -33,12 +33,12 @@ export function H6 (props) {
 
 // non-default html
 export function H1Title(props) {
-    const { className, children, otherProps } = props;
+    const { className, children, ...otherProps } = props;
     let _className = "";
     if (className) {
-        _className = " " + className;
+        _className = className + " ";
     }
-    return <H1 className={"text-center bg-siteGreen text-white p-3 rounded-lg" + _className} {...otherProps}>{children}</H1>
+    return <H1 className={ _className + "text-center bg-siteGreen text-white p-3 rounded-lg" } {...otherProps}>{children}</H1>
 }
 
 export const htmlElements = {

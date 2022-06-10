@@ -23,7 +23,14 @@ export default function Services({ mdxSource }) {
 
             <main className="m-4">
                 <Header />
-                <H1Title className="mt-3 mb-2">{mdxSource.frontmatter.title}</H1Title>
+
+                {mdxSource.frontmatter.cover &&
+                    <div>
+                        <img className='rounded-xl mt-3' src={mdxSource.frontmatter.cover} width="100%" style={{ maxHeight: "300px"}} /> 
+                    </div>
+                }
+
+                <H1Title className="mt-3 mb-2" style={{ fontFamily: "'Comfortaa', cursive"}}>{mdxSource.frontmatter.title}</H1Title>
                 <div className='
                     m-4
                 '>
