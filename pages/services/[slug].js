@@ -10,6 +10,7 @@ import fs from "fs";
 import path from 'path'
 import { serialize } from "next-mdx-remote/serialize"
 import { MDXRemote } from 'next-mdx-remote'
+import { H1, H1Title } from '../../src/mdx-utils/HtmlDesignSystem'
 
 export default function Services({ mdxSource }) {
     return (
@@ -22,18 +23,17 @@ export default function Services({ mdxSource }) {
 
             <main className="m-4">
                 <Header />
+                <H1Title className="mt-3 mb-2">{mdxSource.frontmatter.title}</H1Title>
                 <div className='
-                    pt-4
+                    m-4
                 '>
-                    <h1>Title: {mdxSource.frontmatter.title}</h1>
-                    <div className='bg-gray-500'>
+                    <div className=''>
                         <MDXRemote {...mdxSource} />
-
                     </div>
                 </div>
 
                 <div className='
-                mt-4
+                   mt-4
                 '>
                     <Footer />
                 </div>

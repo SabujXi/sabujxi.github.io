@@ -12,9 +12,9 @@ import { serialize } from "next-mdx-remote/serialize"
 import { MDXRemote } from 'next-mdx-remote'
 import matter from "gray-matter";
 import Link from 'next/link'
+import { H1 } from '../../src/mdx-utils/HtmlDesignSystem'
 
 export default function Services({ postMetas }) {
-    console.log("\nPost metas: ", postMetas)
     return (
         <div className="bg-white">
             <Head>
@@ -26,24 +26,32 @@ export default function Services({ postMetas }) {
             <main className="m-4">
                 <Header />
                 <div className='
-                    pt-4
-                    flex
-                    flex-col
-                    md:flex-row
-                    justify-between
+                    m-4
+
                 '>
                     {postMetas.map((postMeta) => {
-                        return <div key={postMeta.slug}>
-                            <Link href={postMeta.slug}>
-                                <a>{postMeta.frontmatter.title}</a>
-                            </Link> 
+                        return <div className='flex flex-col sm:flex-row justify-center sm:justify-start items-center sm:items-start mb-2' key={postMeta.slug}>
+                            {postMeta.frontmatter.thumbnail &&
+                            <div className='mt-1 mr-2'>
+                                <Image className='rounded-lg' src={postMeta.frontmatter.thumbnail} width="120px" height="120px" layout='fixed'/>
+                            </div>
+                            }
+                            <div>
+                                <div className='text-2xl'>
+                                    <Link href={postMeta.slug}>
+                                        {postMeta.frontmatter.title}
+                                    </Link>
+                                </div>
+                                {postMeta.frontmatter.summary &&
+                                <div>
+                                    {postMeta.frontmatter.summary}
+                                </div> 
+                                }
+                            </div>
                         </div>
                     })}
                 </div>
-
-                <div className='
-          mt-4
-        '>
+                <div className='mt-4'>
                     <Footer />
                 </div>
             </main>

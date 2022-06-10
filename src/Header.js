@@ -27,8 +27,8 @@ export default function Header(props) {
 function Menu({ title, link, classNamez }) {
     return <span className={"text-white text-3xl px-3 py-2 md:py-0 border-b-2 inline-block md:border-b-0 border-white w-full md:w-fit hover:scale-105 " + (classNamez ? classNamez : "")}>
         { link &&
-            <Link href={link}>
-                <a className="no-underline">{title}</a>
+            <Link href={link} className="no-underline">
+                {title}
             </Link> 
         }
         {!link && <>{title}</>}
