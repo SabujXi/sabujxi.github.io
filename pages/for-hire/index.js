@@ -5,11 +5,11 @@ import Link from 'next/link'
 // server side import
 import { getMdxDocMetas } from '../../ssg-utils/mdx-docs-utils'
 
-export default function Services({ postMetas }) {
+export default function ForHire({ postMetas }) {
     return (
         <div className="bg-white">
             <Head>
-                <title>Services Provided by Expert - Md. Sabuj Sarker</title>
+                <title>Expert For Hire - Md. Sabuj Sarker</title>
                 <meta name="description" content="Md. Sabuj Sarker - doer as Software Architect, Project Manager, Business Consultant" />
             </Head>
                 {postMetas.map((postMeta) => {
@@ -38,7 +38,7 @@ export default function Services({ postMetas }) {
 }
 
 export async function getStaticProps() {
-    const docMetas = await getMdxDocMetas("services")
+    const docMetas = await getMdxDocMetas("for-hire")
     return {
         props: {
             postMetas: docMetas

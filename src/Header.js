@@ -2,7 +2,7 @@ import Link from "next/link"
 
 export default function Header(props) {
     return <>
-        <div className="h-full
+        <div {...props} className="h-full
         bg-siteGreen
         px-3
         py-3
@@ -17,9 +17,9 @@ export default function Header(props) {
         ">
             <Menu title="Home" link="/" />
             <Menu title="Services" link="/services" />
-            <Menu title="Projects" />
-            <Menu title="Articles" />
-            <Menu title="About" classNamez="md:ml-auto" />
+            <Menu title="Projects" link="/projects" />
+            <Menu title="Articles" link="/articles" />
+            <Menu title="About" link="/about" classNamez="md:ml-auto" />
         </div>
     </>
 }
