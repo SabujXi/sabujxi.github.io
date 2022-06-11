@@ -1,16 +1,11 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import { Footer } from '../../src/Footer'
-import { ForHireCard } from '../../src/ForHireCard'
 import Header from '../../src/Header'
-import HeroImg from '../../src/HeroImg'
-import SkillCard from '../../src/SkillCard'
-
-import fs from "fs";
-import path from 'path'
-import { serialize } from "next-mdx-remote/serialize"
 import { MDXRemote } from 'next-mdx-remote'
 import { H1, H1Title } from '../../src/mdx-utils/HtmlDesignSystem'
+
+// server side import
+import { getMdxDocSlugs, getMdxDocSourceMeta } from '../../ssg-utils/mdx-docs-utils'
 
 export default function Services({ mdxSource }) {
     return (
@@ -51,24 +46,19 @@ export default function Services({ mdxSource }) {
 
 export async function getStaticProps({ params }) {
     const slug = params.slug;
-    const fileContent = fs.readFileSync(path.join(process.cwd(), "pages/services/" + slug + ".mdx"), { encoding: "utf-8" });
-    const mdxSource = await serialize(fileContent, { parseFrontmatter: true })
+    const mdxSourceMeta = await getMdxDocSourceMeta("services", slug)
     return {
         props: {
-            mdxSource,
-            frontmatter: mdxSource.frontmatter
+            mdxSource: mdxSourceMeta.mdxSource,
+            frontmatter: mdxSourceMeta.frontmatter
         }
     }
 }
 
 export async function getStaticPaths() {
-    const paths = fs.readdirSync(path.join(process.cwd(), "pages/services"))
-        .filter(path => path.endsWith(".mdx"))
-        .map(path => path.replace(/\.mdx$/ig, ""))
-        .map(slug => ({ params: { slug } }))
-
+    const slugs = await getMdxDocSlugs("services");
     return {
-        paths,
+        paths: slugs.map(slug => ({ params: { slug } })),
         fallback: false
     }
 }

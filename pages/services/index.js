@@ -1,18 +1,11 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { Footer } from '../../src/Footer'
-import { ForHireCard } from '../../src/ForHireCard'
 import Header from '../../src/Header'
-import HeroImg from '../../src/HeroImg'
-import SkillCard from '../../src/SkillCard'
-
-import fs from "fs";
-import path from 'path'
-import { serialize } from "next-mdx-remote/serialize"
-import { MDXRemote } from 'next-mdx-remote'
-import matter from "gray-matter";
 import Link from 'next/link'
-import { H1 } from '../../src/mdx-utils/HtmlDesignSystem'
+
+// server side import
+import { getMdxDocMetas } from '../../ssg-utils/mdx-docs-utils'
 
 export default function Services({ postMetas }) {
     return (
@@ -60,22 +53,10 @@ export default function Services({ postMetas }) {
 }
 
 export async function getStaticProps() {
-    const postMetas = [];
-    const mdxFileNames = fs.readdirSync(path.join(process.cwd(), "pages/services"))
-        .filter(path => path.endsWith(".mdx"))
-    for (const fn of mdxFileNames) {
-        const fileContetn = fs.readFileSync(path.join(process.cwd(), "pages/services/" + fn), { encoding: "utf-8"})
-        const matterRes = matter(fileContetn)
-        postMetas.push({
-            slug: "/services/" + fn.replace(/\.mdx$/ig, ""),
-            frontmatter: matterRes.data,
-            content: matterRes.content
-        })
-    }
-
+    const docMetas = await getMdxDocMetas("services")
     return {
         props: {
-            postMetas
+            postMetas: docMetas
         }
     }
 }
