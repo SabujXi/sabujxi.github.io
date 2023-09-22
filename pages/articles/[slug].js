@@ -5,14 +5,13 @@ import { H1, H1Title } from '../../src/mdx-utils/HtmlDesignSystem'
 // server side import
 import { getMdxDocSlugs, getMdxDocSourceMeta } from '../../ssg-utils/mdx-docs-utils'
 
-export default function Services({ mdxSource }) {
+export default function Articles({ mdxSource }) {
     return (
         <div className="bg-white">
             <Head>
                 <title>{mdxSource.frontmatter.title}</title>
-                <meta name="description" content="Md. Sabuj Sarker - doer as Software Architect, Project Manager, Business Consultant" />
+                <meta name="description" content="Article" />
             </Head>
-
                 {mdxSource.frontmatter.cover &&
                     <div>
                         <img className='rounded-xl mt-3' src={mdxSource.frontmatter.cover} width="100%" style={{ maxHeight: "300px"}} /> 
@@ -22,8 +21,6 @@ export default function Services({ mdxSource }) {
                 <H1Title className="mt-3 mb-2" style={{ fontFamily: "'Comfortaa', cursive"}}>{mdxSource.frontmatter.title}</H1Title>
                 <div className='
                     m-4
-                    w-full
-                    lg:w-4/5
                 '>
                     <div className=''>
                         <MDXRemote {...mdxSource} />
@@ -35,7 +32,7 @@ export default function Services({ mdxSource }) {
 
 export async function getStaticProps({ params }) {
     const slug = params.slug;
-    const mdxSourceMeta = await getMdxDocSourceMeta("services", slug)
+    const mdxSourceMeta = await getMdxDocSourceMeta("articles", slug)
     return {
         props: {
             mdxSource: mdxSourceMeta.mdxSource,
@@ -45,7 +42,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-    const slugs = await getMdxDocSlugs("services");
+    const slugs = await getMdxDocSlugs("articles");
     return {
         paths: slugs.map(slug => ({ params: { slug } })),
         fallback: false

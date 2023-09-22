@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { MDXProvider } from '@mdx-js/react'
-import Header from '../src/Header'
-import Footer from '../src/Footer'
+import Header from '../src/components/Header'
+import Footer from '../src/components/Footer'
 import { htmlElements } from '../src/mdx-utils/HtmlDesignSystem'
 import '../styles/globals.css'
 

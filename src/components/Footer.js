@@ -14,7 +14,6 @@ export default function Footer() {
             <div className="text-gray-200">
                 md.sabuj.sarker@gmail.com
                 <br />
-                +8801868363600
             </div>
         </div>
         <div className="

@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ForHireCard } from '../src/ForHireCard'
-import HeroImg from '../src/HeroImg'
-import SkillCard from '../src/SkillCard'
+import { ForHireCard } from '../src/components/ForHireCard'
+import HeroImg from '../src/components/HeroImg'
+import SkillsCard from '../src/components/SkillsCard'
 import { getMdxDocMetas } from '../ssg-utils/mdx-docs-utils'
 
 export default function Home(props) {
@@ -20,12 +20,11 @@ export default function Home(props) {
                 justify-between
             '>
                 <div className='flex-1'>
-                    <SkillCard />
+                    <SkillsCard />
                 </div>
 
-                <div className='h-6 md:w-6'>
+                <div className='h-6 md:w-6'></div>
 
-                </div>
                 <div className='flex-1'>
                     <HeroImg />
                 </div>

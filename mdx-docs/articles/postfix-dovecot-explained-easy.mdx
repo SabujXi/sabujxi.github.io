@@ -1,0 +1,55 @@
+---
+title: Intro Postfix mail server and Dovecot 
+thumbnail: "/images/service-1.jpg"
+cover: /images/service-1-cover.jpg
+---
+# Get to know about Postfix and Dovecot
+
+Postfix is an open-source mail transfer agent (MTA) that routes and delivers email messages. It's designed for reliability and performance, with a modular architecture. The source code is written in C and consists of several components and modules that work together to handle various aspects of email delivery. 
+
+## Various components of Postfix
+
+Here's a simplified breakdown of its components:
+
+<br />
+    - **Queue Manager (qmgr):** This component manages the mail queue, which holds incoming and outgoing messages. It decides when to deliver messages, performs retries, and handles deferred messages.
+    - **SMTP Server (smtpd):** The SMTP daemon handles incoming mail from other servers. It performs authentication, checks sender and recipient addresses, enforces access controls, and initiates the message delivery process.
+    - **Local Delivery (local):** Responsible for delivering mail to local recipients. It manages mailboxes, maildirs, and other local storage mechanisms.
+    - **Mail Transport (trivial-rewrite):** This component rewrites email addresses for proper routing. It handles aliasing, virtual domain mapping, and other address rewriting tasks.
+    - **Message Transfer (pickup, cleanup, bounce, showq):** These components process messages that need to be transferred. They handle message formatting, header cleanup, and generating bounce messages.
+    - **Logging and Monitoring:** Postfix provides extensive logging to track the flow of emails and diagnose issues. The syslogd daemon is commonly used for this purpose.
+
+
+## Postfix vs Dovecot - no, Postfix AND Dovecot
+
+Dovecot and Postfix are two separate software components that serve different roles in the realm of email infrastructure. While both are related to email processing, they have distinct purposes and functionalities.
+
+###    Postfix:
+        - **Role:** Postfix is a mail transfer agent (MTA). It's responsible for routing and delivering email messages between servers. Postfix handles the sending, receiving, and relaying of emails across different domains and networks.
+        - **Features:** Postfix is known for its focus on security, performance, and a modular architecture. It includes components like SMTP server (smtpd), queue manager (qmgr), and address rewriting (trivial-rewrite).
+        - **Use Case:** Postfix is primarily used to set up and manage email servers that handle the sending, receiving, and forwarding of email messages.
+
+###    Dovecot:
+        - **Role:** Dovecot is an email retrieval server and IMAP/POP3 server. Its primary role is to allow email clients (such as Outlook, Thunderbird, or mobile email apps) to retrieve emails from a server.
+        - **Features:** Dovecot provides IMAP (Internet Message Access Protocol) and POP3 (Post Office Protocol) server capabilities. It allows users to access their email messages stored on the server, manage folders, and perform search and filtering operations.
+        - **Use Case:** Dovecot is typically used in conjunction with an MTA like Postfix. While Postfix handles the email delivery, Dovecot handles the retrieval of those emails by email clients.
+
+<br />
+
+In summary, the main difference between Dovecot and Postfix lies in their roles and functionalities within an email infrastructure:
+
+<br />
+
+    Postfix focuses on the transfer and delivery of email messages between servers. It handles the communication aspect of email, ensuring that messages are routed correctly and delivered reliably.
+
+<br />
+
+    Dovecot, on the other hand, concentrates on providing email retrieval services to end-users. It allows email clients to access and manage their emails stored on the server using protocols like IMAP and POP3.
+
+<br />
+
+In a complete email setup, you would often find both Postfix and Dovecot working together: Postfix handles the sending and receiving of email messages between servers, and Dovecot allows email clients to access and manage their emails on the server.
+
+### Looking for someone to develop/manage/provide you with email server setup/support/continius development?
+
+I am here to provide you with all kinds of service from setting up, configuring, load balancing, and providing continious support for your business with email.
