@@ -15,7 +15,7 @@ export default function SkillsCard(props) {
             So, if you are looking for an expert programmer, full stack web designer, mission critical software developer,
             or someone who can solve your modern technology problems and help thrive your business - I am at your service.
             <br />
-            I am inviting you to check out my projects, services, blogs, articles, stories and hey, let's connect at md.sabuj.sarker@gmail.com
+            I am inviting you to check out my projects, services, blogs, articles, stories and hey, let&lsquo;s connect at md.sabuj.sarker@gmail.com
         </QuoteLikeCard>
         <Skill name="Software Architect" />
         <Skill name="Software Engineer" />
